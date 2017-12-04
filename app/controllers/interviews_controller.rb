@@ -39,6 +39,6 @@ class InterviewsController < ApplicationController
 
   private
   def interview_params
-    params.require(:interview).permit(:job_title, :referred?, :received_offer?, :notes, :difficulty_rating, :experience_rating, :accepted_offer?, :phone_screen?, :phone_screen_details, :tech_screen?, :tech_screen_details, :take_home_challenge?, :take_home_challenge_details, :onsite?, :onsite_details, :whiteboarding?, :whiteboarding_details, :negotiation_details, :user_id, :company_id)
+    params.require(:interview).permit(:job_title, :referred, :received_offer, :notes, :difficulty_rating, :experience_rating, :accepted_offer, :phone_screen, :phone_screen_details, :tech_screen, :tech_screen_details, :take_home_challenge, :take_home_challenge_details, :onsite, :onsite_details, :whiteboarding, :whiteboarding_details, :negotiation_details, :user_id, :company_id)
   end
 end

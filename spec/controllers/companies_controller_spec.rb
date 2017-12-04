@@ -9,9 +9,9 @@ RSpec.describe CompaniesController, type: :controller do
     end
   end
 
-  describe "GET #create" do
+  describe "POST #create" do
     it "returns http success" do
-      get :create
+      post :create, params: {company: {name: 'Create', location: 'placeName', website: 'cnn.com', tech_field: 'edtech', has_apprenticeship: true}}
       expect(response).to have_http_status(:success)
     end
   end

@@ -6,8 +6,8 @@ FactoryBot.define do
     location { "#{Faker::Address.city}, #{Faker::Address.state}" }
     website { Faker::Internet.url }
     tech_field { Faker::Company.catch_phrase }
-    has_apprenticeship? { [true, false].sample }
-    skills do 
+    has_apprenticeship { [true, false].sample }
+    skills do
       FactoryBot.create(:skill) until Skill.all.length > skill_count
       Skill.all.sample(skill_count)
     end
