@@ -5,7 +5,7 @@ class CreateCompanies < ActiveRecord::Migration[5.1]
       t.string :location
       t.string :website
       t.string :tech_field
-      t.boolean :has_apprenticeship?
+      t.boolean :has_apprenticeship
 
       t.timestamps
     end
