@@ -4,6 +4,8 @@ COHORTS = ['Bumblebees', 'Fiddler Crabs', 'Rock Doves', 'Fiery Skippers', 'Golde
 
 FactoryBot.define do
   factory :user do
+    transient { skill_count 4 }
+
     name { Faker::Name.name }
     year { (2012..2017).to_a.sample }
     cohort { COHORTS.sample }
@@ -15,5 +17,9 @@ FactoryBot.define do
     current_company { Faker::Company.name }
     current_position { Faker::Company.profession }
     photo_url { Faker::Fillmurray.image }
+    skills do 
+      FactoryBot.create(:skill) until Skill.all.length > skill_count
+      Skill.all.sample(skill_count)
+    end
   end
 end

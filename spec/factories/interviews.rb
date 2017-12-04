@@ -1,5 +1,7 @@
 FactoryBot.define do
   factory :interview do
+    transient { skill_count 4 }
+
     job_title "MyString"
     referred? { [true, false].sample }
     received_offer? false
@@ -18,5 +20,12 @@ FactoryBot.define do
     whiteboarding? { [true, false].sample  }
     whiteboarding_details { Faker::Hacker.say_something_smart }
     negotiation_details { Faker::Hacker.say_something_smart }
+
+    interviewee { User.all.sample || FactoryBot.create(:user) }
+    company { Company.all.sample || FactoryBot.create(:company) }
+    skills do 
+      FactoryBot.create(:skill) until Skill.all.length > skill_count
+      Skill.all.sample(skill_count)
+    end
   end
 end
