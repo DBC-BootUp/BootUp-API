@@ -1,15 +1,22 @@
 require 'rails_helper'
 
-RSpec.describe Company, type: :model do
-
+describe Company do
   let(:company) { Company.create!(
     name: "Paypal",
     location: "Palo Alto",
     website: "paypal.com",
     tech_field: 'fin tech',
-    has_apprenticeship: 'false'
-    ) }
+    has_apprenticeship: 'false')
+  }
+  let(:interviewee) { User.create!(
+    name: "Bob Roberts",
+    year: "2015",
+    cohort: "Smelly Poodles",
+    location: "San Carlos")
+  }
   let(:interview) { Interview.create!(
+    company: company,
+    interviewee: interviewee,
     job_title: "Junior Engineer",
     referred: "false",
     received_offer: true,
@@ -27,19 +34,27 @@ RSpec.describe Company, type: :model do
     onsite_details: "met with 7 people",
     whiteboarding: false,
     whiteboarding_details: "none",
-    negotiation_details: "counteroffer accepted",
-    ) }
+    negotiation_details: "counteroffer accepted")
+    }
   let(:skill) { Skill.create!(
-    name: "javascript"
-    )}
+    name: "javascript")
+  }
+  let(:user) { User.create!(
+    name: "Bob Roberts",
+    year: "2015",
+    cohort: "Smelly Poodles",
+    location: "San Carlos")
+  }
+
 
   describe "associations" do
     it "has many interviews" do
-      expect(company.interviews).to eq interview
+      expect(company.interviews).to eq [interview]
     end
 
-    # it { should have_many(:interviewees).through(:interviews)} do
-
-    # end
+    it "has many interviewees" do
+        FactoryBot.create(:interview, {company: company, interviewee: interviewee})
+        expect(company.interviewees.first).to eq interviewee
+    end
   end
 end

@@ -17,7 +17,7 @@ FactoryBot.define do
     current_company { Faker::Company.name }
     current_position { Faker::Company.profession }
     photo_url { Faker::Fillmurray.image }
-    skills do 
+    skills do
       FactoryBot.create(:skill) until Skill.all.length > skill_count
       Skill.all.sample(skill_count)
     end
