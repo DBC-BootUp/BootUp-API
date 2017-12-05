@@ -105,3 +105,9 @@ ActiveRecord::Schema.define(version: 20171205193026) do
   end
 
 end
+
+
+# searches_controller.rb
+# define action - implement
+# routes
+# update routes
