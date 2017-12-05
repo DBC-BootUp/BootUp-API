@@ -14,12 +14,12 @@ class CompaniesController < ApplicationController
   end
 
   def show
-    company = Company.find_by(params[:id])
+    company = Company.find_by(id: params[:id])
     render json: company
   end
 
   def update
-    company = Company.find_by(params[:id])
+    company = Company.find_by(id: params[:id])
     if company.update(company_params)
       render json: company
     else

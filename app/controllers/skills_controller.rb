@@ -14,12 +14,13 @@ class SkillsController < ApplicationController
   end
 
   def destroy
-    skill = Skill.find_by(params[:id])
+    skill = Skill.find_by(id: params[:id])
     skill.destroy
     render json: {message: "Skill destroyed"}
   end
 
   private
+
   def skill_params
     params.require(:skill).permit(:name)
   end
