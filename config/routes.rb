@@ -4,5 +4,6 @@ Rails.application.routes.draw do
     resources :interviews
     resources :companies
     resources :skills, only: [:create, :index]
+    resources :searches
   end
 end
