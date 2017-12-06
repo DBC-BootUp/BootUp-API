@@ -14,11 +14,12 @@ class InterviewsController < ApplicationController
   end
 
   def create
-    Interview.new(interview_params)
-    if interview.save
-      render json: interview.json_with_associations
+    @interview = Interview.new(interview_params)
+    if @interview.save
+      render json: @interview.json_with_associations
     else
-      render json: {errors: interview.errors.full_messages}, status: 422
+      p @interview.errors.full_messages
+      render json: {errors: @interview.errors.full_messages}, status: 422
     end
   end
 
