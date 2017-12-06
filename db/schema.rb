@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171204013541) do
+ActiveRecord::Schema.define(version: 20171205182332) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20171204013541) do
     t.string "location"
     t.string "website"
     t.string "tech_field"
-    t.boolean "has_apprenticeship"
+    t.boolean "has_apprenticeship?"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -34,21 +34,21 @@ ActiveRecord::Schema.define(version: 20171204013541) do
 
   create_table "interviews", force: :cascade do |t|
     t.string "job_title"
-    t.boolean "referred"
-    t.boolean "received_offer"
+    t.boolean "referred?"
+    t.boolean "received_offer?"
     t.text "notes"
     t.integer "difficulty_rating"
     t.integer "experience_rating"
-    t.boolean "accepted_offer"
-    t.boolean "phone_screen"
+    t.boolean "accepted_offer?"
+    t.boolean "phone_screen?"
     t.text "phone_screen_details"
-    t.boolean "tech_screen"
+    t.boolean "tech_screen?"
     t.text "tech_screen_details"
-    t.boolean "take_home_challenge"
+    t.boolean "take_home_challenge?"
     t.text "take_home_challenge_details"
-    t.boolean "onsite"
+    t.boolean "onsite?"
     t.text "onsite_details"
-    t.boolean "whiteboarding"
+    t.boolean "whiteboarding?"
     t.text "whiteboarding_details"
     t.text "negotiation_details"
     t.bigint "user_id"
@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 20171204013541) do
     t.string "photo_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "uid"
   end
 
 end
