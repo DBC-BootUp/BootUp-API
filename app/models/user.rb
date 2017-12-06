@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_many :companies_applied_to, through: :interviews, source: :company
 
   def json_with_associations
-    self.as_json(include: { 
+    self.as_json(include: {
       skills: {only: [:id, :name]},
       interviews: {include: :company},
       companies_applied_to: {}
