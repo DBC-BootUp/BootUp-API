@@ -5,7 +5,8 @@ class SearchesController < ApplicationController
   end
 
   def create
-   render json: PgSearch.multisearch(params[:searchInput])
+   render json: Company.search_name(params[:searchInput])
+   # render json: PgSearch.multisearch(params[:searchInput])
   end
 
   def show
