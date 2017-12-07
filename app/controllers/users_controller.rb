@@ -37,6 +37,15 @@ class UsersController < ApplicationController
     render json: {message: "User destroyed"}
   end
 
+  def profile
+    user = current_user
+    if user
+      render json: user.json_with_associations
+    else
+      render json: {}
+    end
+  end
+
   private
   def user_params
     params.require(:user).permit(:name, :year, :cohort, :location, :email, :linkedin_url, :github_url, :facebook_url, :current_company, :current_position, :photo_url)

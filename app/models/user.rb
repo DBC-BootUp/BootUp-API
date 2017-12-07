@@ -20,7 +20,7 @@ class User < ApplicationRecord
       user.name = auth_hash[:info][:first_name] + ' ' + auth_hash[:info][:last_name]
       user.email = auth_hash[:info][:email]
       # user.description = auth_hash[:info][:description]
-      user.location = auth_hash[:info][:location]
+      user.location = auth_hash[:info][:location][:name]
       user.photo_url = auth_hash.extra.raw_info.pictureUrls.values[1][0]
       user.linkedin_url = auth_hash[:info][:urls][:public_profile]
       # user.linkedin_token = auth_hash[:credentials][:token]

@@ -5,7 +5,8 @@ Rails.application.routes.draw do
     resources :companies
     resources :skills, only: [:create, :index]
     get '/auth/linkedin/callback', to: 'sessions#login'
-    get '/auth/linkedin/logout', to: 'sessions#logout'
+    get '/logout', to: 'sessions#logout'
     resources :searches
+    get '/profile', to: 'users#profile'
   end
 end

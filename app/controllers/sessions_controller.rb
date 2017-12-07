@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
 
   def logout
     cookies.delete :jwt
-    redirect_to '/test'
+    redirect_to '/'
   end
 
   protected
