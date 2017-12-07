@@ -9,4 +9,5 @@ Rails.application.routes.draw do
     resources :searches
     get '/profile', to: 'users#profile'
   end
+  get '*path', to: 'frontend#index'
 end
