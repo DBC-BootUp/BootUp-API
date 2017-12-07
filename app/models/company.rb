@@ -7,4 +7,12 @@ class Company < ApplicationRecord
   def serializable_hash(options = nil)
     super({except: [:created_at, :updated_at]}.merge(options || {}))
   end
+
+  def json_with_association
+    self.as_json(include: {
+    skills: {only: [:id, :name]},
+    interviews: {include: :interviewee},
+    interviewees: {}
+  })
+  end
 end
