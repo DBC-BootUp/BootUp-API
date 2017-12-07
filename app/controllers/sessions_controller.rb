@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   def login
     user = User.find_or_create_from_auth_hash(auth_hash)
     if user.valid?
-      token = Tokenize.encode({uid: user.uid})
+      token = Tokenize.encode({uid: user.uid, id: user.id})
       cookies[:jwt] = {value: token, httponly: true}
       redirect_to '/'
     else
