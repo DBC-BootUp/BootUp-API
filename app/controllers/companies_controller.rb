@@ -14,8 +14,14 @@ class CompaniesController < ApplicationController
   end
 
   def show
+<<<<<<< HEAD
     company = Company.find_by(id: params[:id])
     render json: company
+=======
+    company = Company.includes(:interviews, :skills, :interviewees).find_by_id(params[:id])
+
+    render json: company.json_with_association
+>>>>>>> e9f00badf1c4182bbd9d5f91d74280d9faad339d
   end
 
   def update

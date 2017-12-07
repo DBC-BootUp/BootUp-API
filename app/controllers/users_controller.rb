@@ -37,6 +37,15 @@ class UsersController < ApplicationController
     render json: {message: "User destroyed"}
   end
 
+  def profile
+    user = current_user
+    if user
+      render json: user.json_with_associations
+    else
+      render json: {}
+    end
+  end
+
   private
   
   def user_params
