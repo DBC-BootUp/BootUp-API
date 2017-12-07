@@ -3,8 +3,13 @@ class ApplicationController < ActionController::API
   after_action :cors_set_access_control_headers
 
   def current_user
+    return nil if cookies[:jwt].nil? || cookies[:jwt].empty?
     token = Tokenize.decode(cookies[:jwt])
     User.try(:find_by, {id: token.first['sub']['id']})
+  end
+
+  def logged_in?
+    !!current_user
   end
 
     def cors_set_access_control_headers
