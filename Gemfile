@@ -36,14 +36,14 @@ gem 'omniauth'
 gem 'omniauth-linkedin-oauth2'
 gem 'pg_search'
 gem 'rack-cors'
+gem "factory_bot_rails", "~> 4.0"
+gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'
   gem 'rails-controller-testing'
-  gem "factory_bot_rails", "~> 4.0"
-  gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
   gem 'dotenv-rails'
   gem 'shoulda-matchers', '~> 3.1'
 end
