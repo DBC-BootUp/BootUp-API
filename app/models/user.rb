@@ -21,7 +21,7 @@ class User < ApplicationRecord
       user.email = auth_hash[:info][:email]
       # user.description = auth_hash[:info][:description]
       user.location = auth_hash[:info][:location][:name]
-      user.photo_url = auth_hash.extra.raw_info.pictureUrls.values[1][0]
+      user.photo_url = auth_hash.extra.raw_info.pictureUrls.values[1][0] unless auth_hash.extra.raw_info.pictureUrls.values.empty?
       user.linkedin_url = auth_hash[:info][:urls][:public_profile]
       # user.linkedin_token = auth_hash[:credentials][:token]
       # user.linkedin_token_expiration = auth_hash[:credentials][:expires_at]
