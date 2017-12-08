@@ -24,7 +24,7 @@ json = File.read('db/data.json')
 data = JSON.parse(json)
 
 data.each do |row|
-  interviewee = User.find_or_create_by(email: row[:email]) do |user|
+  interviewee = User.find_or_create_by(email: row['email']) do |user|
     user.email = row['email']
     user.name = row['name']
   end
