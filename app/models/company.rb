@@ -13,7 +13,7 @@ class Company < ApplicationRecord
   def json_with_association
     self.as_json(include: {
     skills: {only: [:id, :name]},
-    interviews: {include: :interviewee},
+    interviews: {include: {interviewee: {}, company: {}}},
     interviewees: {}
   })
   end

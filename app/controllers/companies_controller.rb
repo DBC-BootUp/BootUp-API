@@ -1,7 +1,7 @@
 class CompaniesController < ApplicationController
   def index
-    companies = Company.all
-    render json: companies
+    companies = Company.includes(:interviews, :skills, :interviewees)
+    render json: companies.map {|company| company.json_with_association}
   end
 
   def create
