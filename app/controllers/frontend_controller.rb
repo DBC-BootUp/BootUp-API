@@ -1,5 +1,5 @@
 class FrontendController < ApplicationController
   def index
-    render file: '/public/build/index.html'
+    render file: '/public/index.html'
   end
 end
