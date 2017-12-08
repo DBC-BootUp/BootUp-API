@@ -1,4 +1,6 @@
 class SkillsController < ApplicationController
+  before_action :authorize
+
   def index
     render json: Skills.all
   end

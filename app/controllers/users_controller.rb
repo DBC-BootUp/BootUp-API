@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authorize
+
   def index
     users = User.includes(:skills, :interviews, :companies_applied_to)
     render json: users.map(&:json_with_associations)

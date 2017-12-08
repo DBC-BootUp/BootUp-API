@@ -1,4 +1,6 @@
 class InterviewsController < ApplicationController
+  before_action :authorize
+
   def index
     interviews = Interview.includes(:skills, :interviewee, :company)
     render json: interviews.map(&:json_with_associations)
@@ -19,6 +21,11 @@ class InterviewsController < ApplicationController
     else
       interview = Interview.new(interview_params)
       interview.interviewee = current_user
+      interview.company = Company.find_or_create_by(name: params[:interview][:company]) do |company|
+        company.name = params[:interview][:company]
+      end
+
+
       if interview.save
         render json: interview.json_with_associations
       else

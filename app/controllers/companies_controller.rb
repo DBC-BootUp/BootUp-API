@@ -1,4 +1,6 @@
 class CompaniesController < ApplicationController
+  before_action :authorize
+
   def index
     companies = Company.includes(:interviews, :skills, :interviewees)
     render json: companies.map {|company| company.json_with_association}
@@ -38,4 +40,5 @@ class CompaniesController < ApplicationController
   def company_params
     params.require(:company).permit(:name, :location, :website, :tech_field, :has_apprenticeship)
   end
+
 end
