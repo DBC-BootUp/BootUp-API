@@ -22,17 +22,18 @@ end
 
 json = File.read('db/data.json')
 data = JSON.parse(json)
+user = User.create(email:"anon@anon.com", name: "Anon-DBC")
 
 data.each do |row|
-  interviewee = User.find_or_create_by(email: row['email']) do |user|
-    user.email = row['email']
-    user.name = row['name']
-  end
+  # interviewee = User.find_or_create_by(email: row['email']) do |user|
+  #   user.email = row['email']
+  #   user.name = row['name']
+  # end
   company = Company.find_or_create_by(name: row['company_name']) {|company| company.name = row['company_name']}
 
 
   Interview.create(
-    interviewee: interviewee,
+    interviewee: user,
     company: company,
     job_title: row['position'],
     difficulty_rating: row['difficulty_rating'],
