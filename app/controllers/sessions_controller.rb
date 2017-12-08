@@ -4,10 +4,10 @@ class SessionsController < ApplicationController
     if user.valid?
       token = Tokenize.encode({uid: user.uid, id: user.id})
       cookies[:jwt] = {value: token, httponly: true}
-      redirect_to '/'
+      redirect_to '/interviews'
     else
       flash[:error] = "Login Failed"
-      redirect_to '/user/info'
+      redirect_to '/'
     end
   end
 
