@@ -1,11 +1,16 @@
 class SearchesController < ApplicationController
+  before_action :authorize 
+
   def index
     searches = Search.all
     render json: searches
   end
 
   def create
-   render json: Company.search_name(params[:searchInput])
+     companies =  Company.search_name(params[:searchInput]).map do |company|
+      company.json_with_association
+    end
+     render json: companies
    # render json: PgSearch.multisearch(params[:searchInput])
   end
 
