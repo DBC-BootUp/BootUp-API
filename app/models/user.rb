@@ -20,9 +20,15 @@ class User < ApplicationRecord
       user.name = auth_hash[:info][:first_name] + ' ' + auth_hash[:info][:last_name] rescue user.name = nil
       user.email = auth_hash[:info][:email] rescue user.email = nil
       # user.description = auth_hash[:info][:description]
+<<<<<<< HEAD
       user.location = auth_hash[:info][:location][:name] rescue user.location = nil
       user.photo_url = auth_hash.extra.raw_info.pictureUrls.values[1][0] rescue user.photo_url = nil
       user.linkedin_url = auth_hash[:info][:urls][:public_profile] rescue user.linkedin_url = nil
+=======
+      user.location = auth_hash[:info][:location][:name]
+      user.photo_url = auth_hash.extra.raw_info.pictureUrls.values[1][0] unless auth_hash.extra.raw_info.pictureUrls.values.empty?
+      user.linkedin_url = auth_hash[:info][:urls][:public_profile]
+>>>>>>> 5d613097692af7f075267094884e5cbefb329528
       # user.linkedin_token = auth_hash[:credentials][:token]
       # user.linkedin_token_expiration = auth_hash[:credentials][:expires_at]
       user.current_company = auth_hash[:extra][:raw_info][:positions][:values][0][:company][:name] rescue user.current_company = nil
